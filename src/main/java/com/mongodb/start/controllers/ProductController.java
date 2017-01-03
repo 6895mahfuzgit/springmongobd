@@ -2,7 +2,6 @@ package com.mongodb.start.controllers;
 
 import com.mongodb.start.model.Product;
 import com.mongodb.start.reposirories.ProductRepository;
-import com.mongodb.start.reposirories.ProductSearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,6 +82,28 @@ public class ProductController {
 
 
         return "getAllProduct";
+    }
+
+
+    @RequestMapping(value = "/edit")
+    public String editProduct(Model model, @RequestParam("productId") String productId) {
+
+        Product product = productRepository.findOne(productId);
+
+
+        model.addAttribute("product", product);
+
+        return "editPage";
+    }
+
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateProduct(@ModelAttribute Product product) {
+
+        productRepository.save(product);
+
+
+        return "redirect:/product/getAllProduct";
     }
 
 

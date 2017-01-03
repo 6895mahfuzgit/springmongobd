@@ -20,7 +20,12 @@
         <td>
             <form action="/product/delete" method="POST">
                 <input type="hidden" name="id" id="id" th:value="${pList.productId}"/>
-                <input type="submit" value="delete"/>
+                <input type="submit" value="Delete"/>
+            </form>
+
+            <form action="/product/edit" method="POST">
+                <input type="hidden" name="productId" id="productId" th:value="${pList.productId}"/>
+                <input type="submit" value="Edit"/>
             </form>
         </td>
     </tr>

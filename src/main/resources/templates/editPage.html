@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/product/update" method="post">
+    Name<input type="text" id="name" name="name" th:value="${product.name}"/><br/>
+    Price<input type="text" id="price" name="price" th:value="${product.price}"/><br/>
+    <input type="hidden" name="productId" id="productId" th:value="${product.productId}"/>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>
