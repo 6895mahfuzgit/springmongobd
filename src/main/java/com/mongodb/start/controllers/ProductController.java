@@ -2,6 +2,7 @@ package com.mongodb.start.controllers;
 
 import com.mongodb.start.model.Product;
 import com.mongodb.start.reposirories.ProductRepository;
+import com.mongodb.start.reposirories.ProductSearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
+
 //
 //    @RequestMapping
 //    public String productList(Model model) {
@@ -49,6 +51,7 @@ public class ProductController {
 
         productRepository.save(product);
 
+
         return "redirect:/product/getAllProduct";
     }
 
@@ -69,6 +72,17 @@ public class ProductController {
         productRepository.delete(product);
 
         return "redirect:/product/getAllProduct";
+    }
+
+    @RequestMapping(value = "/search")
+    public String search(Model model, @RequestParam("search") String search) {
+
+
+        model.addAttribute("productList", productRepository.findByName(search));
+        model.addAttribute("search", search);
+
+
+        return "getAllProduct";
     }
 
 

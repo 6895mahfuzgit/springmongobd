@@ -26,5 +26,12 @@
     </tr>
     </tbody>
 </table>
+
+<form action="/product/search" method="post">
+    <input type="text" id="search" name="search" th:value="${search}"/>
+    <input type="submit" value="Search"/>
+</form>
+
+
 </body>
 </html>
